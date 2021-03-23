@@ -1,14 +1,14 @@
 <!Doctype html>
 <html>
     <head>
-        <title>Mon Site</title>
+        <title>Eros Sport</title>
         <link rel="stylesheet" href="<?php echo RACINE_SITE; ?>inc/css/style.css">
     </head>
     <body>    
         <header>
-            <div class="conteneur">
+            <div class="hd">
                 <div>
-                    <a href="" title="Mon Site">MonSite.com</a>
+                    <a href="#" title="Eros sport"><img src=" <?php echo RACINE_SITE; ?>inc/img/logo.png" class="logo"></a>
                 </div>
                 <nav>
                 <?php
@@ -20,20 +20,23 @@
                     }
                     if(internauteEstConnecte())
                     {
+                        echo '<a href="' . RACINE_SITE . 'boutique.php">Catégorie</a>';
                         echo '<a href="' . RACINE_SITE . 'profil.php">Voir votre profil</a>';
-                        echo '<a href="' . RACINE_SITE . 'boutique.php">Accès à la boutique</a>';
-                        echo '<a href="' . RACINE_SITE . 'panier.php">Voir votre panier</a>';
                         echo '<a href="' . RACINE_SITE . 'connexion.php?action=deconnexion">Se déconnecter</a>';
                     }
                     else
                     {
-                        echo '<a href="' . RACINE_SITE . 'inscription.php">Inscription</a>';
-                        echo '<a href="' . RACINE_SITE . 'connexion.php">Connexion</a>';
-                        echo '<a href="' . RACINE_SITE . 'boutique.php">Accès à la boutique</a>';
-                        echo '<a href="' . RACINE_SITE . 'panier.php">Voir votre panier</a>';
+                        echo '<a href="' . RACINE_SITE . 'boutique.php">Catégorie</a>';
                     }
                     ?>
                 </nav>
+                <div class="r-menu">
+                    <a href="<?php echo RACINE_SITE; ?>panier.php"><img src="<?php echo RACINE_SITE; ?>inc/img/panier.svg" class="panier">Panier</a>
+                    <div class="r-connexion">
+                        <a href="<?php echo RACINE_SITE; ?>inscription.php">Inscription</a>
+                        <a href="<?php echo RACINE_SITE; ?>connexion.php">Connexion</a>
+                    </div>
+                </div>
             </div>
         </header>
         <section>

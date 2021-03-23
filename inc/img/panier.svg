@@ -1,0 +1,23 @@
+<svg id="Composant_2_1" data-name="Composant 2 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="124" height="70" viewBox="0 0 124 70">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-1 {
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="fond" class="cls-1" width="124" height="70" transform="translate(0 -0.129)"/>
+    </clipPath>
+  </defs>
+  <g id="Groupe_de_masques_1" data-name="Groupe de masques 1" class="cls-2" transform="translate(0 0.129)">
+    <path id="__TEMP__SVG__" class="cls-3" d="M168.975,177.75H217.8a6.981,6.981,0,0,0,6.975-6.975V132.413a3.488,3.488,0,0,0-3.488-3.488H210.825v-3.487a17.437,17.437,0,0,0-34.875,0v3.487H165.488A3.488,3.488,0,0,0,162,132.413v38.362A6.981,6.981,0,0,0,168.975,177.75Zm13.95-52.312a10.463,10.463,0,0,1,20.925,0v3.487H182.925ZM168.975,135.9h6.975v6.975h6.975V135.9H203.85v6.975h6.975V135.9H217.8l.007,34.875H168.975Z" transform="translate(-131.388 -107.878)"/>
+  </g>
+</svg>

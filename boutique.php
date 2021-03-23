@@ -19,8 +19,8 @@ if(isset($_GET['categorie']))
     while($produit = $donnees->fetch_assoc())
     {
         $contenu .= '<div class="boutique-produit">';
-        $contenu .= "<h2>$produit[titre]</h2>";
-        $contenu .= "<a href=\"fiche_produit.php?id_produit=$produit[id_produit]\"><img src=\"$produit[photo]\" =\"130\" height=\"100\"></a>";
+        $contenu .= "<a href=\"fiche_produit.php?id_produit=$produit[id_produit]\"><img src=\"$produit[photo]\" =\"330\" height=\"300\"></a>";
+        $contenu .= "<h2 class='nomproduit'>$produit[titre]</h2>";
         $contenu .= "<p>$produit[prix] €</p>";
         $contenu .= '<a href="fiche_produit.php?id_produit=' . $produit['id_produit'] . '">Voir la fiche</a>';
         $contenu .= '</div>';
@@ -28,6 +28,8 @@ if(isset($_GET['categorie']))
 }
 $contenu .= '</div>';
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
-require_once("inc/haut.inc.php");
-echo $contenu;
-require_once("inc/bas.inc.php"); ?>
+require_once("inc/haut.inc.php");?>
+<div class="cat">
+<?php echo $contenu;?>
+</div>
+<?php require_once("inc/bas.inc.php"); ?>
