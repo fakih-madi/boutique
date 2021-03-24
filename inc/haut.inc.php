@@ -1,22 +1,31 @@
 <!Doctype html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Eros Sport</title>
         <link rel="stylesheet" href="<?php echo RACINE_SITE; ?>inc/css/style.css">
+        <link rel="stylesheet" href="<?php echo RACINE_SITE; ?>inc/css/header.css">
+        <link rel="stylesheet" href="<?php echo RACINE_SITE; ?>inc/css/body.css">
+        <link rel="stylesheet" href="<?php echo RACINE_SITE; ?>inc/css/footer.css">
     </head>
     <body>    
         <header>
             <div class="hd">
                 <div>
-                    <a href="<?php echo RACINE_SITE; ?>categorie.php" title="Eros sport"><img src=" <?php echo RACINE_SITE; ?>inc/img/logo.png" class="logo"></a>
+                    <a href="<?php echo RACINE_SITE; ?>index.php" title="Eros sport"><img src=" <?php echo RACINE_SITE; ?>inc/img/logo.png" class="logo"></a>
                 </div>
                 <nav>
                 <?php
                     if(internauteEstConnecteEtEstAdmin())
                     {
-                        echo '<a href="' . RACINE_SITE . 'admin/gestion_membre.php">Gestion des membres</a>';
-                        echo '<a href="' . RACINE_SITE . 'admin/gestion_commande.php">Gestion des commandes</a>';
-                        echo '<a href="' . RACINE_SITE . 'admin/gestion_boutique.php">Gestion de la boutique</a>';
+                        echo '<ul class="menuderoulant"><li><a href="#">Administration</a>';
+                        echo'<ul class="sousmenu">';
+                        echo '<li><a href="' . RACINE_SITE . 'admin/gestion_membre.php">Gestion des membres</a></li>';
+                        echo '<li><a href="' . RACINE_SITE . 'admin/gestion_commande.php">Gestion des commandes</a></li>';
+                        echo '<li><a href="' . RACINE_SITE . 'admin/gestion_boutique.php">Gestion de la boutique</a></li>';
+                        echo '</ul>';
+                        echo '</li></ul>';
                     }
                     if(internauteEstConnecte())
                     {

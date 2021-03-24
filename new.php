@@ -10,7 +10,7 @@ $contenu .= '<div class="new-product">';
     {
         $contenu .= '<div class="new-p">';
         $contenu .= "<a href=\"fiche_produit.php?id_produit=$produit[id_produit]\"><img src=\"$produit[photo]\" =\"330\" height=\"300\"></a>";
-        $contenu .= "<h2 class='nomproduit'>$produit[titre]</h2>";
+        $contenu .= "<h2>$produit[titre]</h2>";
         $contenu .= "<p>$produit[prix] €</p>";
         $contenu .= '<a href="fiche_produit.php?id_produit=' . $produit['id_produit'] . '">Voir la fiche</a>';
         $contenu .= '</div>';

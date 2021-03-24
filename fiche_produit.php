@@ -5,17 +5,19 @@ if(isset($_GET['id_produit']))  { $resultat = executeRequete("SELECT * FROM prod
 if($resultat->num_rows <= 0) { header("location:boutique.php"); exit(); }
  
 $produit = $resultat->fetch_assoc();
-$contenu .= "<h2>Titre : $produit[titre]</h2>";
+$contenu .= "<img src='$produit[photo]' ='630' height='600'>";
+$contenu .= '<div class="fiche-desc">';
+$contenu .= "<h2>$produit[titre]</h2>";
+$contenu .= "<p>$produit[description]</p>";
 $contenu .= "<p>Categorie: $produit[categorie]</p>";
 $contenu .= "<p>Couleur: $produit[couleur]</p>";
 $contenu .= "<p>Taille: $produit[taille]</p>";
-$contenu .= "<img src='$produit[photo]' ='330' height='300'>";
-$contenu .= "<p><i>Description: $produit[description]</i></p>";
-$contenu .= "<p>Prix : $produit[prix] €</p><br>";
+$contenu .= "<p>Prix : $produit[prix] €</p>";
+
  
 if($produit['stock'] > 0)
 {
-    $contenu .= "<i>Nombre d'produit(s) disponible : $produit[stock] </i><br><br>";
+    $contenu .= "Nombre d'produit(s) disponible : $produit[stock]";
     $contenu .= '<form method="post" action="panier.php">';
         $contenu .= "<input type='hidden' name='id_produit' value='$produit[id_produit]'>";
         $contenu .= '<label for="quantite">Quantité : </label>';
@@ -32,7 +34,9 @@ else
 {
     $contenu .= 'Rupture de stock !';
 }
-$contenu .= "<br><a href='categorie.php?categorie=" . $produit['categorie'] . "'>Retour vers la séléction de " . $produit['categorie'] . "</a>";
+$contenu .= "<a href='categorie.php?categorie=" . $produit['categorie'] . "'>Retour vers la séléction de " . $produit['categorie'] . "</a>";
+
+$contenu .= '</div>';
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
 require_once("inc/haut.inc.php");?>
 <div class="fiche">

@@ -1,0 +1,84 @@
+/**************************************************** MILIEU ************************************************/
+section{ padding: 30px; min-height: 800px; }
+/**************************************************** Categorie ************************************************/   
+.cat{
+    display: flex;
+}
+
+.boutique-gauche{ 
+    /*float: left;*/
+    width: 20vh; 
+    min-height: 500px; 
+    margin-left: 12%; 
+    padding-top: 10px; 
+    text-align: center; 
+}
+.boutique-gauche  ul{ list-style: none; padding: 0; }
+.boutique-gauche  ul  li  a{ display: block; padding: 10px; }
+.boutique-gauche  ul  li  a:hover{ background: #ffffff; color: rgb(0, 0, 0); }
+.boutique-droite{
+    display: flex;
+    flex-wrap: wrap;
+    /*float: left;*/
+}
+.nomproduit{
+    text-align: center;
+    font-size: 3vh;
+}
+.boutique-produit{ 
+    /*float: left;*/
+    text-align: center; 
+    padding: 5%; 
+     }
+/*.boutique-produit:hover{ background: #c0c0c0; }*/
+
+/**************************************************** fiche ************************************************/  
+
+.fiche{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/*.fiche img{
+    margin-right: 2vh;
+}*/
+
+.fiche-desc{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/**************************************************** Nouveautes ************************************************/ 
+
+
+.new-product{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.new-p{
+    text-align: center;
+    max-width: 300px;
+    max-height: 394px;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    
+    
+}
+.new-p h2{
+    text-align: center;
+}
+.new-p a img{
+    display:block;
+    width:auto;
+    margin-left:auto;
+    margin-right:auto;
+
+}
