@@ -8,7 +8,7 @@
         <header>
             <div class="hd">
                 <div>
-                    <a href="#" title="Eros sport"><img src=" <?php echo RACINE_SITE; ?>inc/img/logo.png" class="logo"></a>
+                    <a href="<?php echo RACINE_SITE; ?>categorie.php" title="Eros sport"><img src=" <?php echo RACINE_SITE; ?>inc/img/logo.png" class="logo"></a>
                 </div>
                 <nav>
                 <?php
@@ -20,13 +20,15 @@
                     }
                     if(internauteEstConnecte())
                     {
-                        echo '<a href="' . RACINE_SITE . 'boutique.php">Catégorie</a>';
+                        echo '<a href="' . RACINE_SITE . 'new.php">Nouveautés</a>';
+                        echo '<a href="' . RACINE_SITE . 'categorie.php">Catégorie</a>';
                         echo '<a href="' . RACINE_SITE . 'profil.php">Voir votre profil</a>';
                         echo '<a href="' . RACINE_SITE . 'connexion.php?action=deconnexion">Se déconnecter</a>';
                     }
                     else
                     {
-                        echo '<a href="' . RACINE_SITE . 'boutique.php">Catégorie</a>';
+                        echo '<a href="' . RACINE_SITE . 'new.php">Nouveautés</a>';
+                        echo '<a href="' . RACINE_SITE . 'categorie.php">Catégorie</a>';
                     }
                     ?>
                 </nav>

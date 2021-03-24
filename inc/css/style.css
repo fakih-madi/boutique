@@ -1,5 +1,6 @@
 *{ 
     margin: 0;
+    padding:0;
     background-color: black;
     color: white;
 
@@ -7,7 +8,7 @@
 
 a{ text-decoration: none; color: rgb(255, 255, 255); }
 .conteneur{ 
-    margin: 0 auto; max-: 1170px; 
+    margin: 0 auto; 
 }
 /**************************************************** HAUT ************************************************/
 header { 
@@ -32,7 +33,7 @@ header  a{
     padding: 1.5vh; 
     font-size: 1em;
 }
-/*header  nav  a:hover{ background: #04baf6; }*/
+header  nav  a:hover{ background: #ffffff; color: rgb(0, 0, 0); }
 .logo{
     width: 15vh;
 }
@@ -52,7 +53,10 @@ header  a{
     display: flex;
     flex-direction: column;
     
+    padding:0;
+    
 }
+
 
 /**************************************************** MILIEU ************************************************/
 section{ padding: 30px; min-height: 800px; }
@@ -61,15 +65,14 @@ footer{ background: #000; color: white; text-align: center; padding: 7px 0;}
 /**************************************************** GENERAL ************************************************/
 .erreur{ background: #ff0000; padding: 5px; margin: 5px; }
 .validation{ background: #669933; padding: 5px; margin: 5px; }
-/**************************************************** BOUTIQUE ************************************************/   
+/**************************************************** Categorie ************************************************/   
 .cat{
     display: flex;
 }
 
 .boutique-gauche{ 
     /*float: left;*/
-    width: 20vh;
-    background: #f2f2f2; 
+    width: 20vh; 
     min-height: 500px; 
     margin-left: 12%; 
     padding-top: 10px; 
@@ -77,7 +80,7 @@ footer{ background: #000; color: white; text-align: center; padding: 7px 0;}
 }
 .boutique-gauche  ul{ list-style: none; padding: 0; }
 .boutique-gauche  ul  li  a{ display: block; padding: 10px; }
-.boutique-gauche  ul  li  a:hover{ background: #04baf6; color: #fff; }
+.boutique-gauche  ul  li  a:hover{ background: #ffffff; color: rgb(0, 0, 0); }
 .boutique-droite{
     display: flex;
     /*float: left;*/
@@ -93,9 +96,29 @@ footer{ background: #000; color: white; text-align: center; padding: 7px 0;}
      }
 /*.boutique-produit:hover{ background: #c0c0c0; }*/
 
+/**************************************************** fiche ************************************************/  
+
 .fiche{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/**************************************************** Nouveautes ************************************************/ 
+
+
+.new-product{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-p{
+    text-align: center;
+    
+}
+.new-p h2{
+    max-width: 12vh;
 }

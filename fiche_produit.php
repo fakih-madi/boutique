@@ -32,7 +32,7 @@ else
 {
     $contenu .= 'Rupture de stock !';
 }
-$contenu .= "<br><a href='boutique.php?categorie=" . $produit['categorie'] . "'>Retour vers la séléction de " . $produit['categorie'] . "</a>";
+$contenu .= "<br><a href='categorie.php?categorie=" . $produit['categorie'] . "'>Retour vers la séléction de " . $produit['categorie'] . "</a>";
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
 require_once("inc/haut.inc.php");?>
 <div class="fiche">

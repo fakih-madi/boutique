@@ -47,7 +47,7 @@ if(isset($_POST['payer']))
             executeRequete("INSERT INTO details_commande (id_commande, id_produit, quantite, prix) VALUES ($id_commande, " . $_SESSION['panier']['id_produit'][$i] . "," . $_SESSION['panier']['quantite'][$i] . "," . $_SESSION['panier']['prix'][$i] . ")");
         }
         unset($_SESSION['panier']);
-        mail($_SESSION['membre']['email'], "confirmation de la commande", "Merci votre n° de suivi est le $id_commande", "From:vendeur@dp_site.com");
+        //mail($_SESSION['membre']['email'], "confirmation de la commande", "Merci votre n° de suivi est le $id_commande", "From:vendeur@dp_site.com");
         $contenu .= "<div class='validation'>Merci pour votre commande. votre n° de suivi est le $id_commande</div>";
     }
 }
@@ -87,7 +87,7 @@ else
     echo "<tr><td colspan='5'><a href='?action=vider'>Vider mon panier</a></td></tr>";
 }
 echo "</table><br>";
-echo "<i>Réglement par CHÈQUE uniquement à l'adresse suivante : 300 rue de vaugirard 75015 PARIS</i><br>";
+echo "<i>Réglement par CHÈQUE uniquement à l'adresse suivante : 03 rue de abram 13015 Marseille</i><br>";
 // echo "<hr>session panier:<br>"; debug($_SESSION);
 include("inc/bas.inc.php");
 ?>
