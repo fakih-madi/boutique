@@ -102,7 +102,12 @@ if(isset($_GET['action']) && ($_GET['action'] == 'ajout' || $_GET['action'] == '
         <input type="text" id="reference" name="reference" placeholder="la référence de produit" value="'; if(isset($produit_actuel['reference'])) echo $produit_actuel['reference']; echo '"><br><br>
  
         <label for="categorie">categorie</label><br>
-        <input type="text" id="categorie" name="categorie" placeholder="la categorie de produit" value="'; if(isset($produit_actuel['categorie'])) echo $produit_actuel['categorie']; echo '" ><br><br>
+        <select name="categorie">
+        <option value="T-shirt"'; if(isset($produit_actuel) && $produit_actuel['categorie'] == 'T-shirt') echo ' selected '; echo '>T-shirt</option>
+        <option value="Maillot"'; if(isset($produit_actuel) && $produit_actuel['categorie'] == 'Maillot') echo ' selected '; echo '>Maillot</option>
+        <option value="Sweat"'; if(isset($produit_actuel) && $produit_actuel['categorie'] == 'Sweat') echo ' selected '; echo '>Sweat</option>
+        </select><br><br>
+        
  
         <label for="titre">titre</label><br>
         <input type="text" id="titre" name="titre" placeholder="le titre du produit" value="'; if(isset($produit_actuel['titre'])) echo $produit_actuel['titre']; echo '" > <br><br>
@@ -115,10 +120,14 @@ if(isset($_GET['action']) && ($_GET['action'] == 'ajout' || $_GET['action'] == '
  
         <label for="taille">Taille</label><br>
         <select name="taille">
+            <option value="XXS"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'XXS') echo ' selected '; echo '>XXS</option>
+            <option value="XS"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'XS') echo ' selected '; echo '>XS</option>
             <option value="S"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'S') echo ' selected '; echo '>S</option>
             <option value="M"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'M') echo ' selected '; echo '>M</option>
             <option value="L"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'L') echo ' selected '; echo '>L</option>
             <option value="XL"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'XL') echo ' selected '; echo '>XL</option>
+            <option value="XXL"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'XL') echo ' selected '; echo '>XL</option>
+            <option value="XXXL"'; if(isset($produit_actuel) && $produit_actuel['taille'] == 'XL') echo ' selected '; echo '>XL</option>
         </select><br><br>
  
         <label for="public">public</label><br>

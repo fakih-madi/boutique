@@ -45,6 +45,7 @@ function creationDuPanier()
    if(!isset($_SESSION['panier']))
    {
       $_SESSION['panier'] = array();
+      $_SESSION['panier']['photo'] = array();
       $_SESSION['panier']['titre'] = array();
       $_SESSION['panier']['id_produit'] = array();
       $_SESSION['panier']['quantite'] = array();
@@ -52,7 +53,7 @@ function creationDuPanier()
    }
 }
 //------------------------------------
-function ajouterProduitDansPanier($titre, $id_produit, $quantite, $prix)
+function ajouterProduitDansPanier($titre, $id_produit, $quantite, $prix, $photo)
 {
     creationDuPanier(); 
     $position_produit = array_search($id_produit,  $_SESSION['panier']['id_produit']);
@@ -62,6 +63,7 @@ function ajouterProduitDansPanier($titre, $id_produit, $quantite, $prix)
     }
     else
     {
+        $_SESSION['panier']['photo'][] = $photo;
         $_SESSION['panier']['titre'][] = $titre;
         $_SESSION['panier']['id_produit'][] = $id_produit;
         $_SESSION['panier']['quantite'][] = $quantite;

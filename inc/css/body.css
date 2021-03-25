@@ -82,3 +82,45 @@ section{ padding: 30px; min-height: 800px; }
     margin-right:auto;
 
 }
+
+/**************************************************** PANIER ************************************************/
+
+.titre-panier{
+    text-align: center;
+}
+
+.panier{
+    display: flex;
+    margin: auto;
+    width: 70%;
+    max-width: 700px;
+    justify-content: center;
+}
+
+.infos-panier{
+    margin: auto;
+    text-align: center;
+    margin: 0;
+}
+
+.paiement-panier{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.paiement-panier form{
+    margin: auto;
+}
+
+.paiement-panier button{
+    margin: auto;
+}
+
+.paiement-panier p{
+    margin: auto;
+}
+
+.img-panier{
+    max-width: 130px;
+}

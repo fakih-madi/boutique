@@ -6,7 +6,10 @@ if(isset($_POST['ajout_panier']))
 {   // debug($_POST);
     $resultat = executeRequete("SELECT * FROM produit WHERE id_produit='$_POST[id_produit]'");
     $produit = $resultat->fetch_assoc();
-    ajouterProduitDansPanier($produit['titre'],$_POST['id_produit'],$_POST['quantite'],$produit['prix']);
+    ajouterProduitDansPanier($produit['titre'],$_POST['id_produit'],$_POST['quantite'],$produit['prix'],$produit['photo']);
+    header('Location:panier.php'); 
+    exit();
+    
 }
 //--- VIDER PANIER ---//
 if(isset($_GET['action']) && $_GET['action'] == "vider")
@@ -38,7 +41,7 @@ if(isset($_POST['payer']))
             $erreur = true;
         }
     }
-    if(!isset($erreur))
+    /*if(!isset($erreur))
     {
         executeRequete("INSERT INTO commande (id_membre, montant, date_enregistrement) VALUES (" . $_SESSION['membre']['id_membre'] . "," . montantTotal() . ", NOW())");
         $id_commande = $mysqli->insert_id;
@@ -49,15 +52,14 @@ if(isset($_POST['payer']))
         unset($_SESSION['panier']);
         //mail($_SESSION['membre']['email'], "confirmation de la commande", "Merci votre n° de suivi est le $id_commande", "From:vendeur@dp_site.com");
         $contenu .= "<div class='validation'>Merci pour votre commande. votre n° de suivi est le $id_commande</div>";
-    }
+    }*/
 }
  
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
 include("inc/haut.inc.php");
 echo $contenu;
-echo "<table border='1' style='border-collapse: collapse' cellpadding='7'>";
-echo "<tr><td colspan='5'>Panier</td></tr>";
-echo "<tr><th>Titre</th><th>Produit</th><th>Quantité</th><th>Prix Unitaire</th></tr>";
+echo '<h2 class="titre-panier">Panier</h2>';
+echo '<div class="panier">';
 if(empty($_SESSION['panier']['id_produit'])) // panier vide
 {
     echo "<tr><td colspan='5'>Votre panier est vide</td></tr>";
@@ -66,28 +68,33 @@ else
 {
     for($i = 0; $i < count($_SESSION['panier']['id_produit']); $i++) 
     {
-        echo "<tr>";
-        echo "<td>" . $_SESSION['panier']['titre'][$i] . "</td>";
-        echo "<td>" . $_SESSION['panier']['id_produit'][$i] . "</td>";
-        echo "<td>" . $_SESSION['panier']['quantite'][$i] . "</td>";
-        echo "<td>" . $_SESSION['panier']['prix'][$i] . "</td>";
-        echo "</tr>";
+        echo '<div class="infos-panier">';
+        
+            echo '<p><img src="' . $_SESSION['panier']['photo'][$i] . '" class="img-panier"></p>';
+            echo '<p>' . $_SESSION['panier']['titre'][$i] . '</p>';
+            echo '<p>ID Produit: ' . $_SESSION['panier']['id_produit'][$i] . '</p>';
+            echo '<p>Prix: ' . $_SESSION['panier']['prix'][$i] . '€</p>';
+            echo '<p>Quantité(s): ' . $_SESSION['panier']['quantite'][$i] .'</p>';
+        echo '</div>';
+               
+         
     }
-    echo "<tr><th colspan='3'>Total</th><td colspan='2'>" . montantTotal() . " euros</td></tr>";
-    if(internauteEstConnecte()) 
-    {
-        echo '<form method="post" action="">';
-        echo '<tr><td colspan="5"><input type="submit" name="payer" value="Valider et déclarer le paiement"></td></tr>';
-        echo '</form>';   
-    }
-    else
-    {
-        echo '<tr><td colspan="3">Veuillez vous <a href="inscription.php">inscrire</a> ou vous <a href="connexion.php">connecter</a> afin de pouvoir payer</td></tr>';
-    }
-    echo "<tr><td colspan='5'><a href='?action=vider'>Vider mon panier</a></td></tr>";
+    echo "</div>"; 
+    echo '<div class="paiement-panier">';
+        echo '<form method="post" action="paiement.php" class="paiement-data">';
+        echo '<p><input type="text" name="totalprix" value="'. montantTotal() .'€" readonly>'; 
+        echo '<p><input type="submit" name="payer" value="Paiement"></p>';
+        echo '</form>';
+        echo "<button><a href='?action=vider'>Vider mon panier</a></button>";
+        echo "<p>Réglement par CHÈQUE uniquement à l'adresse suivante : Madi Fakih 03 rue de abram 13015 Marseille</p>";
+    echo '</div>';
+        
+          
+    
+    
 }
-echo "</table><br>";
-echo "<i>Réglement par CHÈQUE uniquement à l'adresse suivante : 03 rue de abram 13015 Marseille</i><br>";
+
+
 // echo "<hr>session panier:<br>"; debug($_SESSION);
 include("inc/bas.inc.php");
 ?>

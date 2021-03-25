@@ -17,7 +17,7 @@ $contenu .= "<p>Prix : $produit[prix] €</p>";
  
 if($produit['stock'] > 0)
 {
-    $contenu .= "Nombre d'produit(s) disponible : $produit[stock]";
+    $contenu .= "Nombre de produit(s) disponible : $produit[stock]";
     $contenu .= '<form method="post" action="panier.php">';
         $contenu .= "<input type='hidden' name='id_produit' value='$produit[id_produit]'>";
         $contenu .= '<label for="quantite">Quantité : </label>';
