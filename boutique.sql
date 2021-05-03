@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 24 mars 2021 à 11:15
+-- Généré le : lun. 03 mai 2021 à 10:03
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `date_enregistrement` datetime NOT NULL,
   `etat` enum('en cours de traitement','envoyé','livré') COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_commande`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `commande`
@@ -46,7 +46,8 @@ INSERT INTO `commande` (`id_commande`, `id_membre`, `montant`, `date_enregistrem
 (2, 1, 0, '2021-03-24 02:23:47', 'en cours de traitement'),
 (3, 1, 0, '2021-03-24 02:24:15', 'en cours de traitement'),
 (4, 1, 46, '2021-03-24 02:24:37', 'en cours de traitement'),
-(5, 1, 25, '2021-03-24 02:28:46', 'en cours de traitement');
+(5, 1, 25, '2021-03-24 02:28:46', 'en cours de traitement'),
+(6, 1, 138, '2021-03-24 20:53:06', 'en cours de traitement');
 
 -- --------------------------------------------------------
 
@@ -59,19 +60,24 @@ CREATE TABLE IF NOT EXISTS `details_commande` (
   `id_details_commande` int(3) NOT NULL AUTO_INCREMENT,
   `id_commande` int(3) DEFAULT NULL,
   `id_produit` int(3) DEFAULT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Adresse` text COLLATE utf8_unicode_ci NOT NULL,
+  `Code_postal` int(5) NOT NULL,
   `quantite` int(3) NOT NULL,
   `prix` int(3) NOT NULL,
   PRIMARY KEY (`id_details_commande`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `details_commande`
 --
 
-INSERT INTO `details_commande` (`id_details_commande`, `id_commande`, `id_produit`, `quantite`, `prix`) VALUES
-(1, 1, 14, 1, 46),
-(2, 4, 14, 1, 46),
-(3, 5, 15, 1, 25);
+INSERT INTO `details_commande` (`id_details_commande`, `id_commande`, `id_produit`, `nom`, `prenom`, `Adresse`, `Code_postal`, `quantite`, `prix`) VALUES
+(1, 1, 14, 'Madi', 'Fakih', '03 rue Abram', 13015, 1, 46),
+(2, 4, 14, 'Fakih', 'Junior', '143 rue felix pyat', 13003, 1, 46),
+(3, 5, 15, 'gigi', 'lopez', '03 rue quantico', 13001, 1, 25),
+(4, 6, 14, 'Dereck', 'Morgan', '01 boulevard Quantico', 13002, 3, 46);
 
 -- --------------------------------------------------------
 
@@ -125,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `prix` float NOT NULL,
   `stock` int(3) NOT NULL,
   PRIMARY KEY (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `produit`
@@ -138,7 +144,9 @@ INSERT INTO `produit` (`id_produit`, `reference`, `categorie`, `titre`, `descrip
 (11, '1MYB2021', 'Maillot', 'Maillot Yellow', 'test 2 test 2', 'yellow', 'S', 'm', '/boutique/photo/1MYB2021_Maillot Eros 2021 grafik green.png', 45.99, 300),
 (14, '1MR2021', 'Maillot', 'Maillot Red', 'test test', 'rouge', 'M', 'm', '/boutique/photo/1MR2021_Maillot Eros 2021 rouge.png', 45.99, 100),
 (15, 'TS2021', 'T-shirt', 'T-shirt Eros red logo', 'Porter le fameux logo EROS Edition revisit&eacute; Red\r\n100% coton\r\nMade in France\r\n', 'blanc', 'S', 'f', '/boutique/photo/TS2021_logo-eros-rouge_mockup_Front_Flat_White-Fleck-Triblend.png', 25, 100),
-(16, 'MXIIIA2021', 'Maillot', 'Maillot MXIIIA', 'Le Maillot MXIIIA by Eros Sport', 'bleu', 'S', 'm', '/boutique/photo/MXIIIA2021_maillot entrainement 2021 no bg.png', 65, 200);
+(16, 'MXIIIA2021', 'Maillot', 'Maillot MXIIIA', 'Le Maillot MXIIIA by Eros Sport', 'bleu', 'S', 'm', '/boutique/photo/MXIIIA2021_maillot entrainement 2021 no bg.png', 65, 200),
+(19, 'MXIIIA2020', 'Maillot', 'MXIIIA2020', 'Maillot MXIIIA 2020', 'bleu', 'M', 'm', '/boutique/photo/MXIIIA2020_maillot entrainement 2.png', 65, 100),
+(20, 'TEROS', 'T-shirt', 'T-shirt  Eros Abeille', 'BZZZZZ', 'blanc', 'XXS', 'm', '/boutique/photo/TEROS_bee-705412_1280_mockup_Front_Flat_White.png', 30, 100);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

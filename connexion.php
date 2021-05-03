@@ -47,7 +47,7 @@ if(internauteEstConnecte())
     <input type="text" id="pseudo" name="pseudo"><br> <br>
          
     <label for="mdp">Mot de passe</label><br>
-    <input type="text" id="mdp" name="mdp"><br><br>
+    <input type="password" id="mdp" name="mdp"><br><br>
  
      <input type="submit" value="Se connecter">
 </form>
