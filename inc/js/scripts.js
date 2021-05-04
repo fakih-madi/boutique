@@ -2,7 +2,7 @@ window.onload = () => {
     // Variables
     let stripe = Stripe('pk_test_RXITOibDn6dqmuP4XLPdDA3n00QO7XWHK2')
     let elements = stripe.elements()
-    let redirect = "success_order.php"
+    let redirect = "infos_livraison.php"
 
     // Objets de la page
     let cardHolderName = document.getElementById("cardholder-name")

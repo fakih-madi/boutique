@@ -43,11 +43,13 @@
                 </nav>
                 <div class="r-menu">
                     <a href="<?php echo RACINE_SITE; ?>panier.php"><img src="<?php echo RACINE_SITE; ?>inc/img/panier.svg" class="logopanier">Panier</a>
+                <?php if(!internauteEstConnecte()){?>
                     <div class="r-connexion">
                         <a href="<?php echo RACINE_SITE; ?>inscription.php">Inscription</a>
                         <a href="<?php echo RACINE_SITE; ?>connexion.php">Connexion</a>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </header>
         <section>

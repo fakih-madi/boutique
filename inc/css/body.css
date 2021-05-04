@@ -124,3 +124,7 @@ section{ padding: 30px; min-height: 800px; }
 .img-panier{
     max-width: 130px;
 }
+/**************************************************** formulaire de livraison ************************************************/
+.form_livraison{
+    text-align: center;
+}

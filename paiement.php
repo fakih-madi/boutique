@@ -36,7 +36,7 @@ if( isset($_POST['totalprix']) && !empty($_POST['totalprix']) ){
         <input type="text" id="cardholder-name" placeholder="Titulaire de la carte">
         <div id="card-elements"></div><!-- formulaire de saise des infos carte -->
         <div id="card-errors" role="alert"></div><!-- erreur de la carte-->
-        <button id="card-button" type="button" data-secret="<?= $intent['client_secret'] ?>">Procéder au paiement</button>
+        <button id="card-button" type="button" data-secret="<?= $intent['client_secret'] ?>" name="paiement">Procéder au paiement</button>
     </form>
 
     

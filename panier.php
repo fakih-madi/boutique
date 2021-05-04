@@ -67,23 +67,22 @@ if(empty($_SESSION['panier']['id_produit'])) // panier vide
 else
 {
     for($i = 0; $i < count($_SESSION['panier']['id_produit']); $i++) 
-    {
-        echo '<div class="infos-panier">';
+    {?>
+    <div class="infos-panier">
+    <p><img src="<?php echo $_SESSION['panier']['photo'][$i] ?>" class="img-panier"></p>
+    <p><?php echo $_SESSION['panier']['titre'][$i] ?></p>
+    <p>ID Produit: <?php echo $_SESSION['panier']['id_produit'][$i]?></p>
+    <p>Prix: <?php echo $_SESSION['panier']['prix'][$i]?>€</p>
+    <p>Quantité(s): <?php echo $_SESSION['panier']['quantite'][$i] ?></p>
+    </div>
+            
         
-            echo '<p><img src="' . $_SESSION['panier']['photo'][$i] . '" class="img-panier"></p>';
-            echo '<p>' . $_SESSION['panier']['titre'][$i] . '</p>';
-            echo '<p>ID Produit: ' . $_SESSION['panier']['id_produit'][$i] . '</p>';
-            echo '<p>Prix: ' . $_SESSION['panier']['prix'][$i] . '€</p>';
-            echo '<p>Quantité(s): ' . $_SESSION['panier']['quantite'][$i] .'</p>';
-        echo '</div>';
-               
-         
-    }
+<?php }
     echo "</div>"; 
     echo '<div class="paiement-panier">';
         echo '<form method="post" action="paiement.php" class="paiement-data">';
         echo '<p><input type="text" name="totalprix" value="'. montantTotal() .'€" readonly>'; 
-        echo '<p><input type="submit" name="payer" value="Paiement"></p>';
+        echo '<p><input type="submit" name="payer" value="Commander"></p>';
         echo '</form>';
         echo "<button><a href='?action=vider'>Vider mon panier</a></button>";
         echo "<p>Réglement par CHÈQUE uniquement à l'adresse suivante : Madi Fakih 03 rue de abram 13015 Marseille</p>";
