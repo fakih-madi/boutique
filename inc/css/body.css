@@ -128,3 +128,16 @@ section{ padding: 30px; min-height: 800px; }
 .form_livraison{
     text-align: center;
 }
+/**************************************************** gestion commande ************************************************/
+.gestion_commande{
+    margin: auto;
+    border-collapse: collapse;
+}
+.gestion_commande tr {
+    text-align: center;
+    border-bottom: 1px solid white;  
+}
+.gestion_commande td {
+    text-align: center;
+    border: 1px solid white;  
+}
