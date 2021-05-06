@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 03 mai 2021 à 10:03
+-- Généré le : jeu. 06 mai 2021 à 13:32
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -24,6 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `categorie`
+--
+
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
+  `categorie` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_categorie`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id_categorie`, `categorie`) VALUES
+(1, 'Maillot'),
+(2, 'T-shirt'),
+(3, 'sweat'),
+(7, 'casquette'),
+(6, 'chaussette');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `commande`
 --
 
@@ -33,21 +57,19 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `id_membre` int(3) DEFAULT NULL,
   `montant` int(3) NOT NULL,
   `date_enregistrement` datetime NOT NULL,
-  `etat` enum('en cours de traitement','envoyé','livré') COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id_commande`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id_etat` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_commande`),
+  KEY `id_etat` (`id_etat`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `commande` (`id_commande`, `id_membre`, `montant`, `date_enregistrement`, `etat`) VALUES
-(1, 1, 46, '2021-03-24 02:17:05', 'en cours de traitement'),
-(2, 1, 0, '2021-03-24 02:23:47', 'en cours de traitement'),
-(3, 1, 0, '2021-03-24 02:24:15', 'en cours de traitement'),
-(4, 1, 46, '2021-03-24 02:24:37', 'en cours de traitement'),
-(5, 1, 25, '2021-03-24 02:28:46', 'en cours de traitement'),
-(6, 1, 138, '2021-03-24 20:53:06', 'en cours de traitement');
+INSERT INTO `commande` (`id_commande`, `id_membre`, `montant`, `date_enregistrement`, `id_etat`) VALUES
+(1, 1, 46, '2021-05-04 23:17:24', 2),
+(2, 1, 46, '2021-05-04 23:19:57', 4),
+(3, 1, 92, '2021-05-04 23:46:50', 1);
 
 -- --------------------------------------------------------
 
@@ -57,27 +79,53 @@ INSERT INTO `commande` (`id_commande`, `id_membre`, `montant`, `date_enregistrem
 
 DROP TABLE IF EXISTS `details_commande`;
 CREATE TABLE IF NOT EXISTS `details_commande` (
+  `nom` text CHARACTER SET latin1 NOT NULL,
+  `prenom` text CHARACTER SET latin1 NOT NULL,
+  `adresse` text CHARACTER SET latin1 NOT NULL,
+  `telephone` int(15) DEFAULT NULL,
+  `code_postal` int(5) DEFAULT NULL,
   `id_details_commande` int(3) NOT NULL AUTO_INCREMENT,
   `id_commande` int(3) DEFAULT NULL,
   `id_produit` int(3) DEFAULT NULL,
-  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `prenom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Adresse` text COLLATE utf8_unicode_ci NOT NULL,
-  `Code_postal` int(5) NOT NULL,
+  `id_taille` int(11) NOT NULL,
   `quantite` int(3) NOT NULL,
   `prix` int(3) NOT NULL,
-  PRIMARY KEY (`id_details_commande`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id_details_commande`),
+  KEY `id_commande` (`id_commande`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `details_commande`
 --
 
-INSERT INTO `details_commande` (`id_details_commande`, `id_commande`, `id_produit`, `nom`, `prenom`, `Adresse`, `Code_postal`, `quantite`, `prix`) VALUES
-(1, 1, 14, 'Madi', 'Fakih', '03 rue Abram', 13015, 1, 46),
-(2, 4, 14, 'Fakih', 'Junior', '143 rue felix pyat', 13003, 1, 46),
-(3, 5, 15, 'gigi', 'lopez', '03 rue quantico', 13001, 1, 25),
-(4, 6, 14, 'Dereck', 'Morgan', '01 boulevard Quantico', 13002, 3, 46);
+INSERT INTO `details_commande` (`nom`, `prenom`, `adresse`, `telephone`, `code_postal`, `id_details_commande`, `id_commande`, `id_produit`, `id_taille`, `quantite`, `prix`) VALUES
+('madi', 'fakih', '03 rue abram', 783511976, 13015, 5, 1, 8, 0, 1, 46),
+('ronald', 'mac', 'rue hamburger', 1234567890, 13000, 6, 2, 10, 0, 1, 46),
+('test', 'test', 'rue test', 783511976, 13015, 7, 3, 10, 0, 1, 46),
+('test', 'test', 'rue test', 783511976, 13015, 8, 3, 8, 0, 1, 46);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `etat_commande`
+--
+
+DROP TABLE IF EXISTS `etat_commande`;
+CREATE TABLE IF NOT EXISTS `etat_commande` (
+  `id_etat` int(11) NOT NULL AUTO_INCREMENT,
+  `etat` varchar(255) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id_etat`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `etat_commande`
+--
+
+INSERT INTO `etat_commande` (`id_etat`, `etat`) VALUES
+(1, 'en cours de traitement'),
+(2, 'envoyÃ©'),
+(3, 'livrÃ©'),
+(4, 'probleme livraison');
 
 -- --------------------------------------------------------
 
@@ -89,7 +137,7 @@ DROP TABLE IF EXISTS `membre`;
 CREATE TABLE IF NOT EXISTS `membre` (
   `id_membre` int(3) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `mdp` varchar(32) CHARACTER SET latin1 NOT NULL,
+  `mdp` varchar(255) CHARACTER SET latin1 NOT NULL,
   `nom` varchar(20) CHARACTER SET latin1 NOT NULL,
   `prenom` varchar(20) CHARACTER SET latin1 NOT NULL,
   `email` varchar(50) CHARACTER SET latin1 NOT NULL,
@@ -100,16 +148,16 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `statut` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_membre`),
   UNIQUE KEY `pseudo` (`pseudo`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `membre`
 --
 
 INSERT INTO `membre` (`id_membre`, `pseudo`, `mdp`, `nom`, `prenom`, `email`, `civilite`, `ville`, `code_postal`, `adresse`, `statut`) VALUES
-(1, 'fakih13', 'fakih13003', 'madi', 'fakih', 'madi.bch@gmail.com', 'm', 'Marseille', 13015, '03 rue abram', 1),
-(2, 'nabil13', 'nabil13010', 'Test', 'Nabil', 'nabil@gmail.com', 'm', 'Marseille', 13010, '03 rue test', 0),
-(3, 'test', 'test', 'test', 'test', 'test@hotmail.com', 'm', 'Marseille', 13001, '03 boulevard test', 0);
+(1, 'fakih13', 'caaecdd0c31a8528cda16d8e70240c38f46c0e17', 'madi', 'fakih', 'madi.bch@gmail.com', 'm', 'Marseille', 13015, '03 rue abram', 1),
+(2, 'nabil13', 'f0200a7c32e9dd996faee8476314a44c87421a2c', 'Test', 'Nabil', 'nabil@gmail.com', 'm', 'Marseille', 13010, '03 rue test', 0),
+(4, 'test', 'caaecdd0c31a8528cda16d8e70240c38f46c0e17', 'test', 'test', 'test@gmail.com', 'm', 'Marseille', 13015, '03 rue abram', 0);
 
 -- --------------------------------------------------------
 
@@ -121,32 +169,63 @@ DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
   `id_produit` int(3) NOT NULL AUTO_INCREMENT,
   `reference` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `categorie` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `id_categorie` int(11) NOT NULL,
+  `id_sous_categorie` int(11) NOT NULL,
   `titre` varchar(100) CHARACTER SET latin1 NOT NULL,
   `description` text CHARACTER SET latin1 NOT NULL,
-  `couleur` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `taille` varchar(5) CHARACTER SET latin1 NOT NULL,
-  `public` enum('m','f','mixte') CHARACTER SET latin1 NOT NULL,
   `photo` varchar(250) CHARACTER SET latin1 NOT NULL,
   `prix` float NOT NULL,
   `stock` int(3) NOT NULL,
-  PRIMARY KEY (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id_produit`),
+  KEY `id_categorie` (`id_categorie`),
+  KEY `id_sous_categorie` (`id_sous_categorie`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`id_produit`, `reference`, `categorie`, `titre`, `description`, `couleur`, `taille`, `public`, `photo`, `prix`, `stock`) VALUES
-(8, '1MR2021', 'Maillot', 'Maillot Red', 'test test', 'rouge', 'S', 'm', '/boutique/photo/1MR2021_Maillot Eros 2021 rouge.png', 45.99, 100),
-(9, '1TS2021', 'T-shirt', 'T-shirt', 't-shirt test 01', 'Blanc', 'S', 'm', '/boutique/photo/1TS2021_tshirt mock up Eros Sport 13.png', 20.99, 100),
-(10, '1MYBL2021', 'Maillot', 'Maillot Bleu', 'test3 test3', 'blue', 'S', 'f', '/boutique/photo/1MYBL2021_Maillot Eros 2021 dÃ©grader bleu.png', 45.99, 200),
-(11, '1MYB2021', 'Maillot', 'Maillot Yellow', 'test 2 test 2', 'yellow', 'S', 'm', '/boutique/photo/1MYB2021_Maillot Eros 2021 grafik green.png', 45.99, 300),
-(14, '1MR2021', 'Maillot', 'Maillot Red', 'test test', 'rouge', 'M', 'm', '/boutique/photo/1MR2021_Maillot Eros 2021 rouge.png', 45.99, 100),
-(15, 'TS2021', 'T-shirt', 'T-shirt Eros red logo', 'Porter le fameux logo EROS Edition revisit&eacute; Red\r\n100% coton\r\nMade in France\r\n', 'blanc', 'S', 'f', '/boutique/photo/TS2021_logo-eros-rouge_mockup_Front_Flat_White-Fleck-Triblend.png', 25, 100),
-(16, 'MXIIIA2021', 'Maillot', 'Maillot MXIIIA', 'Le Maillot MXIIIA by Eros Sport', 'bleu', 'S', 'm', '/boutique/photo/MXIIIA2021_maillot entrainement 2021 no bg.png', 65, 200),
-(19, 'MXIIIA2020', 'Maillot', 'MXIIIA2020', 'Maillot MXIIIA 2020', 'bleu', 'M', 'm', '/boutique/photo/MXIIIA2020_maillot entrainement 2.png', 65, 100),
-(20, 'TEROS', 'T-shirt', 'T-shirt  Eros Abeille', 'BZZZZZ', 'blanc', 'XXS', 'm', '/boutique/photo/TEROS_bee-705412_1280_mockup_Front_Flat_White.png', 30, 100);
+INSERT INTO `produit` (`id_produit`, `reference`, `id_categorie`, `id_sous_categorie`, `titre`, `description`, `photo`, `prix`, `stock`) VALUES
+(8, ' 1MR2021', 1, 1, 'Maillot Red', 'test test', '/boutique/photo/1MR2021_Maillot Eros 2021 rouge.png', 45.99, 100),
+(9, '1TS2021', 2, 2, 'T-shirt', 't-shirt test 01', '/boutique/photo/1TS2021_tshirt mock up Eros Sport 13.png', 20.99, 100),
+(10, '1MYBL2021', 1, 2, 'Maillot Bleu', 'test3 test3', '/boutique/photo/1MYBL2021_Maillot Eros 2021 dÃ©grader bleu.png', 45.99, 200),
+(11, '1MYB2021', 1, 1, 'Maillot Yellow', 'test 2 test 2', '/boutique/photo/1MYB2021_Maillot Eros 2021 grafik green.png', 45.99, 300),
+(14, '1MR2021', 1, 2, 'Maillot Red', 'test test', '/boutique/photo/1MR2021_Maillot Eros 2021 rouge.png', 45.99, 100),
+(15, 'TS2021', 2, 2, 'T-shirt Eros red logo', 'Porter le fameux logo EROS Edition revisit&eacute; Red\r\n100% coton\r\nMade in France\r\n', '/boutique/photo/TS2021_logo-eros-rouge_mockup_Front_Flat_White-Fleck-Triblend.png', 25, 100),
+(16, 'MXIIIA2021', 1, 2, 'Maillot MXIIIA', 'Le Maillot MXIIIA by Eros Sport', '/boutique/photo/MXIIIA2021_maillot entrainement 2021 no bg.png', 65, 200),
+(20, 'TEROS', 2, 1, 'T-shirt  Eros Abeille', 'BZZZZZ', '/boutique/photo/TEROS_bee-705412_1280_mockup_Front_Flat_White.png', 30, 100),
+(27, '    1459872', 1, 1, 'maillot 159', 'test ajout maillot', '', 20.99, 100);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sous_categorie`
+--
+
+DROP TABLE IF EXISTS `sous_categorie`;
+CREATE TABLE IF NOT EXISTS `sous_categorie` (
+  `id_sous_categorie` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_sous_categorie`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `sous_categorie`
+--
+
+INSERT INTO `sous_categorie` (`id_sous_categorie`, `nom`) VALUES
+(1, 'rugby'),
+(2, 'football');
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `details_commande`
+--
+ALTER TABLE `details_commande`
+  ADD CONSTRAINT `commande-details_commande` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
