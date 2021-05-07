@@ -1,5 +1,5 @@
 <?php
-require_once("inc/init.inc.php");
+require_once("../inc/init.inc.php");
 //--------------------------------- TRAITEMENTS PHP ---------------------------------//
 
 //--- AFFICHAGE DES PRODUITS ---//
@@ -17,8 +17,8 @@ $contenu .= '<div class="new-product">';
     }
 $contenu .= '</div>';
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
-require_once("inc/haut.inc.php");?>
+require_once("../inc/haut.inc.php");?>
 <div class="new">
 <?php echo $contenu;?>
 </div>
-<?php require_once("inc/bas.inc.php"); ?>
+<?php require_once("../inc/bas.inc.php"); ?>

@@ -1,5 +1,5 @@
 <?php
-require_once("inc/init.inc.php");
+require_once("../inc/init.inc.php");
 //--- PAIEMENT ---//
 if(isset($_SESSION['livraison']))
 {
@@ -19,8 +19,8 @@ if(isset($_SESSION['livraison']))
 }
 
 ?>
-<?php include("inc/haut.inc.php"); ?>
+<?php include("../inc/haut.inc.php"); ?>
 
 <?php if(isset($contenu)){echo $contenu;}?>
 
-<?php include("inc/bas.inc.php"); ?>
+<?php include("../inc/bas.inc.php"); ?>

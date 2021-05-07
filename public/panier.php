@@ -1,5 +1,5 @@
 <?php
-require_once("inc/init.inc.php");
+require_once("../inc/init.inc.php");
 //--------------------------------- TRAITEMENTS PHP ---------------------------------//
 //--- AJOUT PANIER ---//
 if(isset($_POST['ajout_panier'])) 
@@ -56,7 +56,7 @@ if(isset($_POST['payer']))
 }
  
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
-include("inc/haut.inc.php");
+include("../inc/haut.inc.php");
 echo $contenu;
 echo '<h2 class="titre-panier">Panier</h2>';
 echo '<div class="panier">';
@@ -95,5 +95,5 @@ else
 
 
 // echo "<hr>session panier:<br>"; debug($_SESSION);
-include("inc/bas.inc.php");
+include("../inc/bas.inc.php");
 ?>

@@ -1,4 +1,4 @@
-<?php require_once("inc/init.inc.php");
+<?php require_once("../inc/init.inc.php");
 //--------------------------------- TRAITEMENTS PHP ---------------------------------//
 if(isset($_GET['action']) && $_GET['action'] == "deconnexion")
 {
@@ -9,13 +9,15 @@ if(internauteEstConnecte())
     header("location:profil.php");
 }if($_POST)
 {
+    $pseudo = htmlspecialchars($_POST['pseudo']);
+    $mdp = sha1($_POST['mdp']);
     // $contenu .=  "pseudo : " . $_POST['pseudo'] . "<br>mdp : " .  $_POST['mdp'] . "";
-    $resultat = executeRequete("SELECT * FROM membre WHERE pseudo='$_POST[pseudo]'");
+    $resultat = executeRequete("SELECT * FROM membre WHERE pseudo='$pseudo'");
     if($resultat->num_rows != 0)
     {
         // $contenu .=  '<div style="background:green">pseudo connu!</div>';
         $membre = $resultat->fetch_assoc();
-        if($membre['mdp'] == $_POST['mdp'])
+        if($membre['mdp'] == $mdp)
         {
             //$contenu .= '<div class="validation">mdp connu!</div>';
             foreach($membre as $indice => $element)
@@ -39,7 +41,7 @@ if(internauteEstConnecte())
 }
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
 ?>
-<?php require_once("inc/haut.inc.php"); ?>
+<?php require_once("../inc/haut.inc.php"); ?>
 <?php echo $contenu; ?>
  
 <form method="post" action="">
@@ -52,4 +54,4 @@ if(internauteEstConnecte())
      <input type="submit" value="Se connecter">
 </form>
  
-<?php require_once("inc/bas.inc.php"); ?>
+<?php require_once("../inc/bas.inc.php"); ?>

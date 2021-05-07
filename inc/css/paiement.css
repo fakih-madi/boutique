@@ -1,0 +1,29 @@
+.form_paiement{
+    width: 246px;
+    border: 1px solid black;
+    margin: auto;
+}
+h2{
+    text-align: center;
+}
+a{
+    display: block;
+    margin: auto;
+    margin-top: 5vh;
+    text-align: center;
+}
+.infos-panier{
+    margin: auto;
+    text-align: center;
+    width: 300px;
+}
+.img-panier{
+    max-width: 130px;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+}

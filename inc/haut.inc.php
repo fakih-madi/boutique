@@ -1,3 +1,6 @@
+<?php 
+require_once('fonction.inc.php');
+?>
 <!Doctype html>
 <html>
     <head>
@@ -13,7 +16,7 @@
         <header>
             <div class="hd">
                 <div>
-                    <a href="<?php echo RACINE_SITE; ?>index.php" title="Eros sport"><img src=" <?php echo RACINE_SITE; ?>inc/img/logo.png" class="logo"></a>
+                    <a href="<?php echo RACINE_SITE; ?>public/index.php" title="Eros sport"><img src=" <?php echo RACINE_SITE; ?>inc/img/logo.png" class="logo"></a>
                 </div>
                 <nav>
                 <?php
@@ -29,27 +32,29 @@
                     }
                     if(internauteEstConnecte())
                     {
-                        echo '<a href="' . RACINE_SITE . 'new.php">Nouveautés</a>';
-                        echo '<a href="' . RACINE_SITE . 'categorie.php">Catégorie</a>';
-                        echo '<a href="' . RACINE_SITE . 'profil.php">Voir votre profil</a>';
-                        echo '<a href="' . RACINE_SITE . 'connexion.php?action=deconnexion">Se déconnecter</a>';
+                        echo '<a href="' . RACINE_SITE . 'public/new.php">Nouveautés</a>';
+                        echo '<a href="' . RACINE_SITE . 'public/categorie.php">Catégorie</a>';
+                        echo '<a href="' . RACINE_SITE . 'public/profil.php">Voir votre profil</a>';
+                        echo '<a href="' . RACINE_SITE . 'public/connexion.php?action=deconnexion">Se déconnecter</a>';
                     }
                     else
                     {
-                        echo '<a href="' . RACINE_SITE . 'new.php">Nouveautés</a>';
-                        echo '<a href="' . RACINE_SITE . 'categorie.php">Catégorie</a>';
+                        echo '<a href="' . RACINE_SITE . 'public/new.php">Nouveautés</a>';
+                        echo '<a href="' . RACINE_SITE . 'public/categorie.php">Catégorie</a>';
                     }
                     ?>
                 </nav>
                 <div class="r-menu">
-                    <a href="<?php echo RACINE_SITE; ?>panier.php"><img src="<?php echo RACINE_SITE; ?>inc/img/panier.svg" class="logopanier">Panier</a>
+                    <a href="<?php echo RACINE_SITE?>public/panier.php"><img src="<?php echo RACINE_SITE; ?>inc/img/panier.svg" class="logopanier">Panier</a>
+                    <a href="<?php echo RACINE_SITE?>public/page_suivi.php">Suivi commande</a>
                 <?php if(!internauteEstConnecte()){?>
                     <div class="r-connexion">
-                        <a href="<?php echo RACINE_SITE; ?>inscription.php">Inscription</a>
-                        <a href="<?php echo RACINE_SITE; ?>connexion.php">Connexion</a>
+                        <a href="<?php echo RACINE_SITE; ?>public/inscription.php">Inscription</a>
+                        <a href="<?php echo RACINE_SITE; ?>public/connexion.php">Connexion</a>
                     </div>
                 </div>
                 <?php } ?>
             </div>
+            <?php include('search.php') ?>
         </header>
         <section>

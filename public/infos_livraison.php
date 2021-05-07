@@ -1,5 +1,5 @@
 <?php
-require_once("inc/init.inc.php");
+require_once("../inc/init.inc.php");
 
 if(isset($_POST['submit_livraison'])){
     if(isset($_POST['nom']) AND !empty($_POST['nom'])){
@@ -28,7 +28,7 @@ if(isset($_POST['submit_livraison'])){
 
 
 ?>
-<?php include("inc/haut.inc.php"); ?>
+<?php include("../inc/haut.inc.php"); ?>
 
 <h2>Paiement validée</h2>
 <h2>Il manque une étape</h2>
@@ -61,4 +61,4 @@ for($i = 0; $i < count($_SESSION['panier']['id_produit']); $i++)
 <?php }
 ?>
 
-<?php include("inc/bas.inc.php"); ?>
+<?php include("../inc/bas.inc.php"); ?>
