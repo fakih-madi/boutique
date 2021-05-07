@@ -1,7 +1,7 @@
 <?php
 require_once('../inc/fonction.inc.php');
 if (isset($_POST["search"])) {
-	$str = $_POST["search"];
+	$str = htmlspecialchars($_POST["search"]);
 	$sth = executeRequete('SELECT * FROM categorie INNER JOIN produit ON categorie.id_categorie = produit.id_categorie WHERE categorie LIKE "%'.$str.'%"');
  	$trouver = $sth->fetch_assoc();
 		if ($trouver){?>
